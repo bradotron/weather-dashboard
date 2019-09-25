@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var bodyParser = require("body-parser");
+var bodyParser = require('body-parser');
 
 //var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
@@ -15,9 +15,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
+	bodyParser.urlencoded({
+		extended: false,
+	})
 );
 app.use(bodyParser.json());
 
@@ -30,7 +30,7 @@ app.get('/api/test', function(req, res) {
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+	res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
 // catch 404 and forward to error handler
