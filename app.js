@@ -4,8 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
-//var indexRouter = require('./routes/index');
-//var usersRouter = require('./routes/users');
+var routes = require('./routes');
 
 var app = express();
 
@@ -23,15 +22,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/api/test', function(req, res) {
-	res.send('hello world');
-});
-
-// The "catchall" handler: for any request that doesn't
-// match one above, send back React's index.html file.
-app.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname + '/client/build/index.html'));
-});
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
